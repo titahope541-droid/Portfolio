@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Harvest - AgriChain</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="log_harvest.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🌱</div>
+                    <div class="logo-text">AgriChain</div>
+                </div>
+                <div class="user-menu">
+                    <div class="user-info">
+                        <div class="user-name">Rajesh Kumar</div>
+                        <div class="user-role">Farmer</div>
+                    </div>
+                    <div class="avatar">RK</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Log New Harvest</h1>
+                <a href="farmer-dash.html" class="btn btn-outline" style="text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Dashboard
+                </a>
+            </div>
+
+            <div class="harvest-form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-clipboard-list"></i> Harvest Information</h2>
+                </div>
+
+                <form id="harvestForm" class="form-content">
+                    <!-- Crop Information Section -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fas fa-seedling"></i> Crop Details</h3>
+
+                        <div class="form-group">
+                            <label for="cropType">Crop Type *</label>
+                            <select id="cropType" class="form-control" required>
+                                <option value="">Select a crop</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="rice">Rice</option>
+                                <option value="corn">Corn</option>
+                                <option value="potato">Potatoes</option>
+                                <option value="tomato">Tomatoes</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="harvestWeight">Estimated Weight *</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="harvestWeight" class="form-control" placeholder="Enter weight"
+                                    min="1" required>
+                                <div class="unit-display">kg</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fieldLocation">Field Location</label>
+                            <input type="text" id="fieldLocation" class="form-control"
+                                placeholder="e.g., Field A, North Section">
+                        </div>
+                    </div>
+
+                    <!-- Photo Capture Section -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fas fa-camera"></i> Photo Capture</h3>
+
+                        <div class="camera-section">
+                            <div id="cameraPreview" class="camera-preview">
+                                <i class="fas fa-camera"></i>
+                                <span>Tap to capture or upload photo</span>
+                            </div>
+
+                            <div class="camera-actions">
+                                <button type="button" id="captureBtn" class="btn-camera btn-camera-primary">
+                                    <i class="fas fa-camera"></i>
+                                    Capture Photo
+                                </button>
+                                <button type="button" id="uploadBtn" class="btn-camera btn-camera-secondary">
+                                    <i class="fas fa-upload"></i>
+                                    Upload Photo
+                                </button>
+                            </div>
+
+                            <input type="file" id="photoUpload" accept="image/*" capture="environment"
+                                style="display: none;">
+                        </div>
+                    </div>
+
+                    <!-- GPS Information Section -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fas fa-map-marker-alt"></i> Location</h3>
+
+                        <div class="form-group">
+                            <label>GPS Coordinates</label>
+                            <div class="gps-status">
+                                <div id="gpsIcon" class="gps-icon gps-loading">
+                                    <i class="fas fa-satellite"></i>
+                                </div>
+                                <div>
+                                    <div id="gpsStatus">Acquiring GPS location...</div>
+                                    <div id="gpsCoordinates" class="gps-coordinates"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            Submit Harvest
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation - Visible only on mobile -->
+    <nav class="bottom-nav">
+        <div class="nav-items-bottom">
+            <a href="farmer-dashboard.html" class="nav-item-bottom">
+                <i class="fas fa-seedling"></i>
+                <span>Harvests</span>
+            </a>
+            <a href="log-harvest.html" class="nav-item-bottom active">
+                <i class="fas fa-plus-circle"></i>
+                <span>Log</span>
+            </a>
+            <a href="#" class="nav-item-bottom">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="#" class="nav-item-bottom">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="modal-title">Harvest Logged Successfully!</h3>
+            <p class="modal-message">Your harvest has been recorded and a digital receipt has been generated. The record
+                has been securely stored on the blockchain.</p>
+            <div class="modal-actions">
+                <button id="viewReceiptBtn" class="btn btn-primary">
+                    <i class="fas fa-receipt"></i>
+                    View Receipt
+                </button>
+                <button id="newHarvestBtn" class="btn btn-outline">
+                    <i class="fas fa-plus"></i>
+                    Log Another
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const harvestForm = document.getElementById('harvestForm');
+        const cameraPreview = document.getElementById('cameraPreview');
+        const captureBtn = document.getElementById('captureBtn');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const photoUpload = document.getElementById('photoUpload');
+        const gpsIcon = document.getElementById('gpsIcon');
+        const gpsStatus = document.getElementById('gpsStatus');
+        const gpsCoordinates = document.getElementById('gpsCoordinates');
+        const successModal = document.getElementById('successModal');
+        const viewReceiptBtn = document.getElementById('viewReceiptBtn');
+        const newHarvestBtn = document.getElementById('newHarvestBtn');
+
+        // Current harvest data
+        let currentHarvestData = {
+            cropType: '',
+            weight: 0,
+            location: '',
+            photo: null,
+            gps: null
+        };
+
+        // Initialize GPS
+        function initializeGPS() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        // Success
+                        const lat = position.coords.latitude.toFixed(6);
+                        const lng = position.coords.longitude.toFixed(6);
+
+                        gpsIcon.classList.remove('gps-loading');
+                        gpsIcon.innerHTML = '<i class="fas fa-check"></i>';
+                        gpsStatus.textContent = 'GPS location acquired';
+                        gpsCoordinates.textContent = `Lat: ${lat}, Lng: ${lng}`;
+
+                        currentHarvestData.gps = { lat, lng };
+                    },
+                    function (error) {
+                        // Error
+                        gpsIcon.classList.remove('gps-loading');
+                        gpsIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                        gpsIcon.style.background = var(--warning);
+                        gpsStatus.textContent = 'GPS access denied or unavailable';
+                        gpsCoordinates.textContent = 'Using approximate location';
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 60000
+                    }
+                );
+            } else {
+                gpsIcon.classList.remove('gps-loading');
+                gpsIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                gpsIcon.style.background = var(--warning);
+                gpsStatus.textContent = 'Geolocation is not supported by this browser';
+            }
+        }
+
+        // Camera functionality
+        captureBtn.addEventListener('click', function () {
+            photoUpload.click();
+        });
+
+        uploadBtn.addEventListener('click', function () {
+            photoUpload.click();
+        });
+
+        photoUpload.addEventListener('change', function (e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    cameraPreview.style.backgroundImage = `url(${e.target.result})`;
+                    cameraPreview.classList.add('has-image');
+                    cameraPreview.innerHTML = '<i class="fas fa-sync-alt"></i><span>Tap to change photo</span>';
+
+                    currentHarvestData.photo = e.target.result;
+                };
+
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        cameraPreview.addEventListener('click', function () {
+            photoUpload.click();
+        });
+
+        // Form submission
+        harvestForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const cropType = document.getElementById('cropType').value;
+            const weight = document.getElementById('harvestWeight').value;
+            const location = document.getElementById('fieldLocation').value;
+
+            // Validate required fields
+            if (!cropType || !weight) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            if (!currentHarvestData.photo) {
+                alert('Please capture or upload a photo of your harvest');
+                return;
+            }
+
+            // Update harvest data
+            currentHarvestData.cropType = cropType;
+            currentHarvestData.weight = weight;
+            currentHarvestData.location = location;
+
+            // Simulate API call with loading state
+            const submitBtn = harvestForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+
+            // Simulate API delay
+            setTimeout(function () {
+                // Show success modal
+                successModal.style.display = 'flex';
+
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Modal actions
+        viewReceiptBtn.addEventListener('click', function () {
+            // Redirect to receipt page (in a real app)
+            window.location.href = 'farmer-dashboard.html';
+        });
+
+        newHarvestBtn.addEventListener('click', function () {
+            // Reset form
+            harvestForm.reset();
+            cameraPreview.style.backgroundImage = '';
+            cameraPreview.classList.remove('has-image');
+            cameraPreview.innerHTML = '<i class="fas fa-camera"></i><span>Tap to capture or upload photo</span>';
+
+            // Reinitialize GPS
+            initializeGPS();
+
+            // Hide modal
+            successModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function (event) {
+            if (event.target === successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeGPS();
+
+            // Set up bottom navigation active state
+            document.querySelectorAll('.nav-item-bottom').forEach(item => {
+                item.addEventListener('click', function () {
+                    document.querySelectorAll('.nav-item-bottom').forEach(i => {
+                        i.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
