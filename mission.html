@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="AGRICHAIN LOGO.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission - AgriChain By DIRA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary: #ff9800;
+            --accent: #2196f3;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e68900;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary);
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+        }
+
+        /* Mission Statement Section */
+        .mission-statement {
+            background-color: var(--bg-light);
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .mission-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .mission-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .mission-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Vision Section */
+        .vision-section {
+            text-align: center;
+        }
+
+        .vision-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vision-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .vision-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .vision-stat {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .vision-stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            color: var(--text-light);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background-color: var(--bg-light);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .impact-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .impact-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .impact-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        /* Values Section */
+        .values-section {
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        /* Roadmap Section */
+        .roadmap-section {
+            background-color: var(--bg-light);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .roadmap-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            text-align: center;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            width: 150px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 15px;
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.9)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .vision-stats,
+            .impact-grid,
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .roadmap-timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+                z-index: 999;
+            }
+
+            .nav-item {
+                margin: 16px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .vision-stats,
+            .impact-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <img src="AGRICHAIN LOGO.png" style="height: 4em; width: 4em;">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="mission.html" class="nav-link">Mission</a></li>
+                    <li class="nav-item"><a href="how_it_works.html" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Mission & Vision</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Mission</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement Section -->
+    <section class="section mission-statement">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2>Our Mission</h2>
+                    <p>AgriChain is on a mission to transform agricultural supply chains in Africa by leveraging
+                        blockchain technology to reduce post-harvest losses, ensure fair compensation for farmers, and
+                        create transparent, efficient market access.</p>
+                    <p>We believe that by creating trust and transparency throughout the agricultural value chain, we
+                        can unlock significant economic potential for smallholder farmers while addressing critical food
+                        security challenges.</p>
+                    <p>Our approach combines cutting-edge Hedera blockchain technology with practical, farmer-centric
+                        design to create solutions that work in real-world conditions across Cameroon and beyond.</p>
+                    <a href="how-it-works.html" class="btn">See How It Works</a>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                        alt="Farmers working together">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section vision-section">
+        <div class="container">
+            <h2 class="section-title">Our Vision</h2>
+            <div class="vision-content">
+                <p>We envision a future where African farmers receive fair value for their produce, where food waste is
+                    dramatically reduced, and where agricultural supply chains are transparent, efficient, and equitable
+                    for all participants.</p>
+                <p>By 2028, we aim to reduce post-harvest losses by 20% across our partner networks, directly improve
+                    the livelihoods of 50,000 smallholder farmers, and create $100 million in additional value for
+                    African agricultural communities.</p>
+
+                <div class="vision-stats">
+                    <div class="vision-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-number">20%</div>
+                        <div class="stat-text">Reduction in post-harvest losses</div>
+                    </div>
+                    <div class="vision-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">50,000</div>
+                        <div class="stat-text">Farmers with improved livelihoods</div>
+                    </div>
+                    <div class="vision-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-number">$100M</div>
+                        <div class="stat-text">Additional value created</div>
+                    </div>
+                    <div class="vision-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-number">5</div>
+                        <div class="stat-text">African countries by 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="section impact-section">
+        <div class="container">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Farmer Empowerment</h3>
+                    <p>We put farmers first by ensuring timely payments, fair pricing, and access to premium markets
+                        through verified quality and provenance.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Reduced Food Waste</h3>
+                    <p>By optimizing supply chains and reducing post-harvest losses, we're addressing one of Africa's
+                        most pressing food security challenges.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Market Access</h3>
+                    <p>We connect smallholder farmers directly with buyers, eliminating exploitative middlemen and
+                        creating more equitable trading relationships.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Economic Growth</h3>
+                    <p>By increasing efficiency and reducing losses, we're unlocking significant economic value for
+                        agricultural communities across Africa.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>Our traceability solutions help meet international sustainability standards, opening access to
+                        premium export markets.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Transparency</h3>
+                    <p>Blockchain technology creates immutable records that build trust between all participants in the
+                        supply chain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section values-section">
+        <div class="container">
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Farmer-Centric</h3>
+                    <p>We design our solutions with and for farmers, ensuring they're practical, accessible, and truly
+                        meet the needs of agricultural communities.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Transparency</h3>
+                    <p>We believe in open, honest operations and clear communication with all our stakeholders, from
+                        farmers to partners to investors.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously explore new technologies and approaches to solve age-old problems in agriculture
+                        and supply chain management.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>We work closely with farmers, cooperatives, exporters, and technology partners to create
+                        solutions that benefit everyone in the ecosystem.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to building solutions that are environmentally sustainable, economically viable,
+                        and socially equitable.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Efficiency</h3>
+                    <p>We strive to eliminate waste and inefficiency at every step of the agricultural value chain, from
+                        farm to buyer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="section roadmap-section">
+        <div class="container">
+            <h2 class="section-title">Our Roadmap</h2>
+            <div class="roadmap-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q4 2023 - Q1 2024</div>
+                        <h3>Pilot Launch</h3>
+                        <p>Launch AgriChain pilot with 5 farms and 1 aggregator in Cameroon. Target: 1,000 custody
+                            events and 10% spoilage reduction.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q2 - Q3 2024</div>
+                        <h3>Scale in Cameroon</h3>
+                        <p>Expand to 3 major cocoa exporters and 2 agritech startups. Target: 50,000 custody events
+                            monthly and expansion to palm oil sector.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q4 2024 - Q1 2025</div>
+                        <h3>Regional Expansion</h3>
+                        <p>Launch operations in Ghana and Côte d'Ivoire. Develop partnerships with major commodity
+                            traders and chocolate manufacturers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - 2026</div>
+                        <h3>Product Diversification</h3>
+                        <p>Expand to additional crops including coffee, cashew, and shea. Launch advanced analytics and
+                            farmer financing products.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2027 - 2028</div>
+                        <h3>Pan-African Platform</h3>
+                        <p>Establish AgriChain as the leading agricultural traceability platform across West and Central
+                            Africa with 100,000+ active farmers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners-section">
+        <div class="container">
+            <h2 class="section-title">Our Partners</h2>
+            <p
+                style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                We're proud to collaborate with forward-thinking organizations across the agricultural and technology
+                sectors to achieve our mission.
+            </p>
+            <div class="partners-logos">
+                <div class="partner-logo">Agrix Tech</div>
+                <div class="partner-logo">Telcar Cocoa</div>
+                <div class="partner-logo">OFI Cameroon</div>
+                <div class="partner-logo">Atlantic Cocoa</div>
+                <div class="partner-logo">Sic-Cacaos</div>
+                <div class="partner-logo">ECOM Trading</div>
+                <div class="partner-logo">Hedera</div>
+                <div class="partner-logo">FAO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Whether you're a farmer, exporter, investor, or technology partner, there's a place for you in the
+                AgriChain ecosystem. Together, we can transform African agriculture.</p>
+            <a href="contact.html" class="btn btn-secondary">Get Involved</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">AgriChain</div>
+                    <p>Transforming agricultural supply chains with blockchain technology to reduce post-harvest losses,
+                        ensure fair payments to farmers, and create transparent provenance tracking.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="how_it_works.html">How It Works</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgriChain By DIRA. All rights reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+
+</html>
